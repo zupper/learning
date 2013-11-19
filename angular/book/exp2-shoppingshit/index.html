@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html ng-app="myApp" id="ng-app">
+
+<head>
+	<link rel="stylesheet" href="vendor/css/bootstrap.css">
+	<link rel="stylesheet" href="css/main.css">
+	<title>Shoppong cart</title>
+</head>
+
+<body>
+
+	<div>
+		<h1>Shopping shit</h1>
+		<div ng-controller="SomeController">
+			<table class="table">
+				<tr>
+					<th>Name</th>
+					<th>Count</th>
+					<th>Unit Price</th>
+					<th>Sub-total</th>
+					<th>Action</th>
+				</tr>
+				<tr ng-repeat="item in data.items">
+					<td>{{item.name}}</td>
+					<td><input ng-model="item.count"/></td>
+					<td>{{item.price | currency}}</td>
+					<td>{{item.price * item.count | currency}}</td>
+					<td><button ng-click="removeItem($index)">Remove</button>
+				</tr>
+				<tr ng-if="data.adding">
+					<td><input ng-model="newItem.name" placeholder="Name" /></td>
+					<td><input ng-model="newItem.count" placeholder="Count" /></td>
+					<td><input ng-model="newItem.price" placeholder="Unit Price" /></td>
+					<td>{{newItem.count * newItem.price | currency}}</td>
+					<td><button ng-click="addNewItem(newItem)">Save</button>
+				</tr>
+			</table>
+			<button ng-click="data.adding = true" ng-if="!data.adding">Add New Item</button>
+		</div>
+	</div>
+
+	<script src="vendor/js/angular.min.js"></script>
+	<script src="vendor/js/ui-bootstrap-tpls-0.6.0.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
+
+</html>

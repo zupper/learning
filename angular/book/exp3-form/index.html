@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html ng-app="myApp" id="ng-app">
+
+<head>
+	<link rel="stylesheet" href="vendor/css/bootstrap.css">
+	<link rel="stylesheet" href="vendor/css/bootstrap-theme.css">
+	<link rel="stylesheet" href="css/main.css">
+	<title>Form</title>
+</head>
+
+<body>
+
+	<h1>Form</h1>
+	<div ng-controller="SomeController">
+		<form novalidate class="css-form">
+			<table class="table">
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" ng-model="user.name" required /></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><input type="email" ng-model="user.email" required /></td>
+				</tr>
+				<tr>
+					<td>Gender:</td>
+					<td><input type="radio" ng-model="user.gender" value="male" />Male <input type="radio" ng-model="user.gender" value="female" />Female</td>
+				</tr>
+			</table>
+			<button ng-click="reset()">Reset</button>
+			<button ng-click="save(user)">Save</button>
+		</form>
+
+		<pre>{{user | json}}</pre>
+		<pre>{{master | json}}</pre>
+	</div>
+
+	<script src="vendor/js/angular.min.js"></script>
+	<script src="vendor/js/ui-bootstrap-tpls-0.6.0.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
+
+</html>
